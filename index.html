@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Nikbinler — Mockup Seçici</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,900;1,300&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:#0a0806;color:#f4ead8;font-family:'Inter',system-ui,sans-serif;min-height:100vh;padding:60px 32px;font-weight:300}
+  .wrap{max-width:1280px;margin:0 auto}
+  header{text-align:center;margin-bottom:70px}
+  .kicker{font-family:'Fraunces',serif;font-style:italic;color:#e8b84a;font-size:18px;letter-spacing:2px;margin-bottom:18px}
+  h1{font-family:'Fraunces',serif;font-weight:900;font-size:clamp(56px,9vw,120px);line-height:.9;letter-spacing:-.04em;color:#f4ead8}
+  h1 em{font-weight:300;font-style:italic;color:#e8b84a}
+  .sub{margin-top:24px;font-family:'Fraunces',serif;font-style:italic;font-size:20px;color:#a89578;max-width:640px;margin-left:auto;margin-right:auto;line-height:1.5}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:28px;margin-top:20px}
+  .card{background:#1a0f0a;border:1px solid rgba(232,184,74,.18);border-radius:8px;overflow:hidden;transition:all .3s;cursor:pointer;display:flex;flex-direction:column}
+  .card:hover{transform:translateY(-8px);border-color:#e8b84a;box-shadow:0 30px 60px rgba(0,0,0,.5)}
+  .card-preview{aspect-ratio:16/10;position:relative;overflow:hidden}
+  .pA{background:
+    radial-gradient(ellipse at 30% 20%,rgba(255,107,53,.6),transparent 55%),
+    radial-gradient(ellipse at 70% 70%,rgba(139,26,26,.7),transparent 60%),
+    linear-gradient(135deg,#2a1810,#1a0f08)}
+  .pB{background:
+    radial-gradient(circle at 50% 30%,rgba(232,184,74,.5),transparent 55%),
+    radial-gradient(circle at 30% 80%,rgba(199,21,133,.55),transparent 60%),
+    linear-gradient(135deg,#1a1040,#07050f)}
+  .pC{background:#f5f1e8;background-image:
+    repeating-linear-gradient(0deg,transparent 0,transparent 22px,rgba(10,10,10,.08) 22px,rgba(10,10,10,.08) 23px),
+    repeating-linear-gradient(90deg,transparent 0,transparent 22px,rgba(10,10,10,.08) 22px,rgba(10,10,10,.08) 23px)}
+  .pC::after{content:"nikbinler.";position:absolute;bottom:18px;left:22px;font-family:'Fraunces',serif;font-weight:900;font-size:52px;color:#0a0a0a;letter-spacing:-.04em}
+  .pC::before{content:"";position:absolute;top:0;right:0;width:36px;height:100%;background:#d41411}
+  .pD{background:
+    radial-gradient(ellipse at 50% 30%,rgba(232,184,74,.35),transparent 55%),
+    radial-gradient(ellipse at 20% 85%,rgba(232,106,44,.35),transparent 55%),
+    radial-gradient(ellipse at 80% 75%,rgba(139,26,26,.4),transparent 50%),
+    linear-gradient(135deg,#241510,#0e0806)}
+  .pA::after,.pB::after,.pD::after{content:"nikbinler";position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:'Fraunces',serif;font-weight:900;font-size:52px;color:#f4ead8;letter-spacing:-.04em}
+  .pB::after{color:#f5f0e8}
+  .pD::after{color:#f4ead8}
+  .card-body{padding:26px 24px 28px;flex:1;display:flex;flex-direction:column}
+  .card-tag{font-family:'Fraunces',serif;font-style:italic;font-size:13px;color:#e8b84a;letter-spacing:1.5px;margin-bottom:8px}
+  .card h3{font-family:'Fraunces',serif;font-weight:900;font-size:28px;color:#f4ead8;margin-bottom:10px;letter-spacing:-.02em}
+  .card p{font-size:14px;color:#a89578;margin-bottom:20px;flex:1;line-height:1.55}
+  .card-link{font-size:13px;letter-spacing:1.5px;text-transform:uppercase;color:#e8b84a;font-weight:600}
+  .card:hover .card-link{color:#fff}
+  .note{margin-top:60px;padding:24px;border:1px dashed rgba(232,184,74,.3);border-radius:6px;font-family:'Fraunces',serif;font-style:italic;color:#a89578;text-align:center;font-size:15px}
+  .note b{color:#e8b84a;font-style:normal;font-family:'Inter',sans-serif}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="kicker">— nikbinler · demo mockup seçici —</div>
+    <h1>4 tasarım <em>yönü.</em></h1>
+    <p class="sub">Her biri farklı bir duyguyu deniyor. İçine gir, kaydır, hisset — sonra seçelim.</p>
+  </header>
+
+  <div class="grid">
+    <a href="./a/" class="card">
+      <div class="card-preview pA"></div>
+      <div class="card-body">
+        <div class="card-tag">Option A</div>
+        <h3>Vintage Psych</h3>
+        <p>Burnt orange, mustard, crimson. 70'ler vinil estetiği, grainy doku, psikedelik swirl.</p>
+        <span class="card-link">Aç →</span>
+      </div>
+    </a>
+    <a href="./b/" class="card">
+      <div class="card-preview pB"></div>
+      <div class="card-body">
+        <div class="card-tag">Option B</div>
+        <h3>Cosmic Anatolian</h3>
+        <p>Deep purple, altın, magenta. Yıldızlı gece, mandala, festival estetiği.</p>
+        <span class="card-link">Aç →</span>
+      </div>
+    </a>
+    <a href="./c/" class="card">
+      <div class="card-preview pC"></div>
+      <div class="card-body">
+        <div class="card-tag">Option C</div>
+        <h3>Raw Tape Brutalist</h3>
+        <p>Kağıt + mürekkep, monospace, tape kırmızısı. Indie dergi estetiği, güçlü tipografi.</p>
+        <span class="card-link">Aç →</span>
+      </div>
+    </a>
+    <a href="./d/" class="card">
+      <div class="card-preview pD"></div>
+      <div class="card-body">
+        <div class="card-tag">Option D · Önerim</div>
+        <h3>Mix / Hybrid</h3>
+        <p>Warm dark, altın vurgu, Fraunces display. A'nın sıcaklığı + D'nin mistik derinliği + C'nin tipografik disiplini.</p>
+        <span class="card-link">Aç →</span>
+      </div>
+    </a>
+  </div>
+
+  <div class="note">Hepsi <b>birer mockup</b> — tıklayıp içine gir, menüye bas, kaydır. Beğendiğini söyle, gerçek site üretimine geçelim.</div>
+</div>
+</body>
+</html>

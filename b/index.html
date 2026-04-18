@@ -1,0 +1,411 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Nikbinler — Mockup B · Cosmic Anatolian</title>
+<meta name="description" content="70'ler Anadolu Psychedelic Rock. Nikbinler resmi sitesi.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Inter:wght@300;400;500;600&family=Tenor+Sans&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#07050f;
+    --bg2:#110b24;
+    --bg3:#1a1040;
+    --ink:#f5f0e8;
+    --ink-dim:#9a8fb8;
+    --gold:#e8b84a;
+    --gold2:#c89a2a;
+    --magenta:#c71585;
+    --purple:#6b2d8f;
+    --pearl:#f5f0e8;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Inter',system-ui,sans-serif;
+    font-weight:300;
+    line-height:1.65;
+    overflow-x:hidden;
+    position:relative;
+  }
+  /* Starfield */
+  body::before{
+    content:"";
+    position:fixed;inset:0;
+    background-image:
+      radial-gradient(1px 1px at 20% 30%, #fff, transparent),
+      radial-gradient(1px 1px at 40% 70%, #e8b84a, transparent),
+      radial-gradient(1.5px 1.5px at 80% 20%, #fff, transparent),
+      radial-gradient(1px 1px at 60% 50%, #c71585, transparent),
+      radial-gradient(1px 1px at 15% 80%, #fff, transparent),
+      radial-gradient(1px 1px at 90% 60%, #e8b84a, transparent),
+      radial-gradient(1px 1px at 35% 15%, #fff, transparent),
+      radial-gradient(1.5px 1.5px at 75% 85%, #fff, transparent);
+    background-size: 600px 600px;
+    opacity:.5;
+    pointer-events:none;
+    z-index:1;
+  }
+  /* Film grain overlay */
+  body::after{
+    content:"";
+    position:fixed;inset:0;
+    background-image:url("../shared/img/noise.svg");
+    opacity:.06;
+    pointer-events:none;
+    z-index:1000;
+    mix-blend-mode:overlay;
+  }
+  a{color:inherit;text-decoration:none}
+  img{max-width:100%;display:block}
+  .container{max-width:1280px;margin:0 auto;padding:0 32px;position:relative;z-index:2}
+
+  /* NAV */
+  nav{
+    position:sticky;top:0;z-index:100;
+    background:rgba(7,5,15,.7);
+    backdrop-filter:blur(16px);
+    border-bottom:1px solid rgba(232,184,74,.15);
+  }
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;padding:22px 36px;max-width:1400px;margin:0 auto}
+  .nav-logo{color:var(--gold);height:46px;width:auto}
+  .nav-logo svg{height:100%;width:auto}
+  .nav-menu{display:flex;gap:40px;align-items:center}
+  .nav-menu a{font-size:12px;letter-spacing:3px;text-transform:uppercase;color:var(--ink-dim);transition:color .25s;font-family:'Tenor Sans',serif}
+  .nav-menu a:hover{color:var(--gold)}
+  .nav-cta{background:linear-gradient(135deg,var(--gold),var(--gold2));color:#07050f;padding:11px 24px;border-radius:2px;font-weight:500;font-size:12px;letter-spacing:2px;text-transform:uppercase}
+  .lang{font-size:11px;letter-spacing:2px;color:var(--ink-dim);font-family:'Tenor Sans',serif}
+  .lang b{color:var(--gold)}
+
+  /* HERO */
+  .hero{
+    min-height:100vh;
+    display:flex;align-items:center;justify-content:center;
+    position:relative;
+    padding:80px 32px;
+    text-align:center;
+    overflow:hidden;
+    background:
+      radial-gradient(ellipse at 50% 30%, rgba(107,45,143,.5), transparent 60%),
+      radial-gradient(ellipse at 20% 90%, rgba(199,21,133,.3), transparent 55%),
+      radial-gradient(ellipse at 85% 80%, rgba(26,16,64,.8), transparent 50%),
+      var(--bg);
+  }
+  .hero-mandala{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;opacity:.22;pointer-events:none}
+  .hero-mandala svg{width:min(90vw,900px);height:min(90vw,900px);color:var(--gold);animation:rotate 180s linear infinite}
+  @keyframes rotate{to{transform:rotate(360deg)}}
+  .hero-content{position:relative;z-index:3;max-width:980px}
+  .hero-kicker{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:24px;color:var(--gold);letter-spacing:4px;margin-bottom:24px;text-transform:uppercase}
+  .hero h1{
+    font-family:'Cormorant Garamond',serif;
+    font-weight:400;
+    font-size:clamp(72px,14vw,220px);
+    line-height:.92;
+    letter-spacing:-.02em;
+    color:var(--pearl);
+    text-shadow:0 0 80px rgba(232,184,74,.4);
+  }
+  .hero h1 em{font-style:italic;color:var(--gold)}
+  .hero-sub{margin-top:36px;font-size:19px;color:var(--ink-dim);max-width:640px;margin-left:auto;margin-right:auto;font-family:'Cormorant Garamond',serif;font-style:italic}
+  .hero-cta-row{display:flex;gap:20px;justify-content:center;margin-top:52px;flex-wrap:wrap}
+  .btn{padding:17px 38px;border-radius:2px;font-weight:500;letter-spacing:2.5px;font-size:12px;text-transform:uppercase;transition:all .3s;display:inline-flex;align-items:center;gap:10px;border:none;cursor:pointer;font-family:'Tenor Sans',serif}
+  .btn-primary{background:linear-gradient(135deg,var(--gold),var(--gold2));color:#07050f}
+  .btn-primary:hover{box-shadow:0 0 40px rgba(232,184,74,.5);transform:translateY(-2px)}
+  .btn-ghost{background:transparent;color:var(--pearl);border:1px solid rgba(232,184,74,.35)}
+  .btn-ghost:hover{border-color:var(--gold);color:var(--gold)}
+
+  /* Divider with kilim motif */
+  .kilim-divider{
+    height:24px;
+    background-image:repeating-linear-gradient(90deg,
+      var(--gold) 0, var(--gold) 2px, transparent 2px, transparent 14px,
+      var(--magenta) 14px, var(--magenta) 16px, transparent 16px, transparent 28px);
+    opacity:.4;
+    margin:60px 0;
+  }
+
+  /* SECTION */
+  section{padding:140px 32px;position:relative;z-index:2}
+  .section-label{font-family:'Tenor Sans',serif;font-size:11px;letter-spacing:5px;text-transform:uppercase;color:var(--gold);margin-bottom:20px}
+  .section-title{font-family:'Cormorant Garamond',serif;font-weight:400;font-size:clamp(44px,6.5vw,80px);line-height:1;color:var(--pearl);margin-bottom:40px;letter-spacing:-.01em}
+  .section-title em{font-style:italic;color:var(--gold)}
+
+  /* ABOUT */
+  .about{display:grid;grid-template-columns:1.1fr 1fr;gap:100px;align-items:center;max-width:1280px;margin:0 auto}
+  .about-visual{aspect-ratio:4/5;position:relative;border-radius:2px;overflow:hidden;box-shadow:0 40px 120px rgba(0,0,0,.7)}
+  .about-visual::before{content:"";position:absolute;inset:0;background:
+    radial-gradient(circle at 30% 20%, rgba(232,184,74,.7), transparent 50%),
+    radial-gradient(circle at 70% 80%, rgba(199,21,133,.6), transparent 55%),
+    linear-gradient(135deg,var(--bg3),#2d0a4a 50%,#0a0520);
+  }
+  .about-visual::after{content:"";position:absolute;inset:0;background-image:url("../shared/img/noise.svg");opacity:.25;mix-blend-mode:overlay}
+  .about p{font-size:18px;color:var(--ink-dim);margin-bottom:22px;max-width:560px;font-weight:300}
+  .about p em{color:var(--gold);font-style:italic;font-family:'Cormorant Garamond',serif;font-size:1.1em}
+  .about-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:40px;padding-top:40px;border-top:1px solid rgba(232,184,74,.2)}
+  .stat-num{font-family:'Cormorant Garamond',serif;font-size:48px;color:var(--gold);line-height:1}
+  .stat-label{font-size:11px;letter-spacing:2px;color:var(--ink-dim);text-transform:uppercase;margin-top:8px}
+
+  /* DISCO */
+  .albums{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:50px;margin-top:70px}
+  .album{position:relative;transition:transform .4s}
+  .album:hover{transform:translateY(-10px)}
+  .album-cover{aspect-ratio:1;overflow:hidden;position:relative;box-shadow:0 30px 80px rgba(0,0,0,.7),0 0 0 1px rgba(232,184,74,.1)}
+  .album-cover::after{content:"";position:absolute;inset:0;background-image:url("../shared/img/noise.svg");opacity:.2;mix-blend-mode:overlay}
+  .cov1{background:
+    radial-gradient(circle at 50% 40%,var(--gold),transparent 40%),
+    radial-gradient(circle at 30% 70%,var(--magenta),transparent 45%),
+    linear-gradient(135deg,var(--bg3),#2d0a4a);
+  }
+  .cov2{background:
+    conic-gradient(from 45deg at 50% 50%,var(--magenta),var(--purple),var(--gold),var(--magenta));
+    filter:blur(.3px);
+  }
+  .cov3{background:
+    radial-gradient(circle at 60% 40%,var(--gold) 10%,transparent 30%),
+    radial-gradient(circle at 30% 70%,var(--purple),transparent 50%),
+    linear-gradient(135deg,#07050f,#2d0a4a 70%,var(--magenta));
+  }
+  .album-title{font-family:'Cormorant Garamond',serif;font-size:26px;margin-top:24px;color:var(--pearl);font-style:italic}
+  .album-meta{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--ink-dim);margin-top:8px;font-family:'Tenor Sans',serif}
+  .play-overlay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(7,5,15,.5);opacity:0;transition:opacity .3s}
+  .album:hover .play-overlay{opacity:1}
+  .play-overlay svg{width:60px;height:60px;color:var(--gold)}
+
+  /* CONCERTS */
+  .concerts{background:linear-gradient(180deg,transparent,rgba(26,16,64,.4) 20%,rgba(26,16,64,.4) 80%,transparent);}
+  .concert-list{max-width:960px;margin:70px auto 0;display:flex;flex-direction:column;gap:0}
+  .concert{padding:40px 0;display:grid;grid-template-columns:140px 1fr auto;gap:36px;align-items:center;border-bottom:1px solid rgba(232,184,74,.12);transition:padding .2s}
+  .concert:hover{padding-left:16px}
+  .concert-date{font-family:'Cormorant Garamond',serif;color:var(--gold);font-size:14px;letter-spacing:3px;text-transform:uppercase;line-height:1.2}
+  .concert-date b{display:block;font-size:42px;color:var(--pearl);font-weight:400;font-style:italic;letter-spacing:-1px}
+  .concert-info h4{font-family:'Cormorant Garamond',serif;font-size:28px;color:var(--pearl);margin-bottom:6px;font-weight:400}
+  .concert-info p{color:var(--ink-dim);font-size:14px;letter-spacing:1px}
+  .concert .btn{padding:12px 24px;font-size:11px}
+
+  /* NEWS */
+  .news-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:40px;margin-top:70px}
+  .news-card{border:1px solid rgba(232,184,74,.15);transition:all .3s;position:relative;overflow:hidden}
+  .news-card:hover{border-color:var(--gold);transform:translateY(-4px)}
+  .news-thumb{aspect-ratio:16/10;position:relative}
+  .news-thumb.t1{background:radial-gradient(circle at 30% 50%,var(--gold),var(--magenta) 60%,var(--bg3))}
+  .news-thumb.t2{background:linear-gradient(135deg,var(--purple),var(--magenta))}
+  .news-thumb.t3{background:radial-gradient(circle at 70% 30%,var(--gold),var(--bg3) 70%)}
+  .news-body{padding:30px}
+  .news-meta{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:14px;font-family:'Tenor Sans',serif}
+  .news-body h4{font-family:'Cormorant Garamond',serif;font-size:24px;line-height:1.25;color:var(--pearl);margin-bottom:14px;font-weight:400}
+  .news-body p{font-size:14px;color:var(--ink-dim)}
+
+  /* FOOTER */
+  footer{background:#050309;padding:100px 32px 50px;border-top:1px solid rgba(232,184,74,.2);position:relative;z-index:2}
+  .footer-grid{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1.5fr;gap:56px}
+  .footer-brand svg{height:64px;color:var(--gold)}
+  .footer-brand p{color:var(--ink-dim);margin-top:24px;font-size:14px;max-width:300px;font-style:italic;font-family:'Cormorant Garamond',serif;font-size:17px}
+  footer h5{font-family:'Tenor Sans',serif;font-size:11px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:20px}
+  footer ul{list-style:none;display:flex;flex-direction:column;gap:12px}
+  footer li a{color:var(--ink-dim);font-size:14px;transition:color .2s}
+  footer li a:hover{color:var(--gold)}
+  .newsletter input{background:transparent;border:none;border-bottom:1px solid rgba(232,184,74,.3);padding:12px 0;color:var(--pearl);width:100%;font-family:inherit;font-size:14px}
+  .newsletter input:focus{outline:none;border-color:var(--gold)}
+  .newsletter button{margin-top:14px;font-size:11px}
+  .copyright{max-width:1280px;margin:70px auto 0;padding-top:32px;border-top:1px solid rgba(232,184,74,.1);text-align:center;color:var(--ink-dim);font-size:12px;letter-spacing:2px;font-family:'Tenor Sans',serif}
+  .mockup-badge{position:fixed;bottom:20px;right:20px;background:var(--gold);color:#07050f;padding:11px 20px;font-size:11px;letter-spacing:2px;text-transform:uppercase;font-weight:700;z-index:999;box-shadow:0 10px 40px rgba(232,184,74,.35);font-family:'Tenor Sans',serif}
+  .mockup-badge a{color:inherit;text-decoration:underline;margin-left:10px}
+
+  @media(max-width:900px){
+    .nav-menu{display:none}
+    .about{grid-template-columns:1fr;gap:50px}
+    .concert{grid-template-columns:90px 1fr;gap:18px}
+    .concert .btn{grid-column:1/-1}
+    .footer-grid{grid-template-columns:1fr 1fr;gap:36px}
+  }
+</style>
+</head>
+<body>
+
+<!-- Logo sprite -->
+<svg style="display:none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+  <symbol id="nb-logo" viewBox="0 0 600 320">
+    <g fill="currentColor" transform="translate(300 90)">
+      <ellipse cx="0" cy="-70" rx="3" ry="70"/>
+      <ellipse cx="-45" cy="-60" rx="3" ry="65" transform="rotate(-18 -45 -60)"/>
+      <ellipse cx="45" cy="-60" rx="3" ry="65" transform="rotate(18 45 -60)"/>
+      <ellipse cx="-85" cy="-40" rx="2.5" ry="55" transform="rotate(-32 -85 -40)"/>
+      <ellipse cx="85" cy="-40" rx="2.5" ry="55" transform="rotate(32 85 -40)"/>
+      <ellipse cx="-115" cy="-12" rx="2" ry="45" transform="rotate(-48 -115 -12)"/>
+      <ellipse cx="115" cy="-12" rx="2" ry="45" transform="rotate(48 115 -12)"/>
+    </g>
+    <text x="300" y="260" text-anchor="middle" fill="currentColor" font-family="'Alfa Slab One','Cormorant Garamond',Georgia,serif" font-size="180" letter-spacing="-2">nikbinler</text>
+    <g fill="currentColor" transform="translate(300 180) scale(0.55)">
+      <circle cx="0" cy="-45" r="18" fill="none" stroke="currentColor" stroke-width="4"/>
+      <circle cx="0" cy="-30" r="10"/>
+      <path d="M-14 -18 Q-18 20 -22 70 L22 70 Q18 20 14 -18 Q7 -22 0 -22 Q-7 -22 -14 -18 Z"/>
+      <path d="M-14 -10 Q-45 -20 -58 10 Q-48 0 -18 5 Z"/>
+      <path d="M14 -10 Q45 -20 58 10 Q48 0 18 5 Z"/>
+      <path d="M22 30 L55 55 M30 32 Q38 28 42 36 M38 40 Q46 36 50 44 M46 48 Q54 44 58 52" stroke="currentColor" stroke-width="2.5" fill="none"/>
+    </g>
+  </symbol>
+</svg>
+
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="nav-logo" aria-label="Nikbinler">
+      <svg viewBox="0 0 600 320"><use href="#nb-logo"/></svg>
+    </a>
+    <div class="nav-menu">
+      <a href="#hakkimizda">Hakkımızda</a>
+      <a href="#diskografi">Diskografi</a>
+      <a href="#konserler">Konserler</a>
+      <a href="#haberler">Haberler</a>
+      <a href="#iletisim">İletişim</a>
+      <span class="lang"><b>TR</b> · EN</span>
+      <a href="#dinle" class="nav-cta">Dinle</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-mandala">
+    <svg viewBox="-200 -200 400 400" aria-hidden="true">
+      <g fill="none" stroke="currentColor" stroke-width=".8">
+        <circle r="180"/><circle r="150"/><circle r="120"/><circle r="90"/><circle r="60"/><circle r="30"/>
+      </g>
+      <g fill="currentColor">
+        <g id="petal"><path d="M0 -180 Q20 -100 0 -60 Q-20 -100 0 -180"/></g>
+        <use href="#petal" transform="rotate(30)"/>
+        <use href="#petal" transform="rotate(60)"/>
+        <use href="#petal" transform="rotate(90)"/>
+        <use href="#petal" transform="rotate(120)"/>
+        <use href="#petal" transform="rotate(150)"/>
+        <use href="#petal" transform="rotate(180)"/>
+        <use href="#petal" transform="rotate(210)"/>
+        <use href="#petal" transform="rotate(240)"/>
+        <use href="#petal" transform="rotate(270)"/>
+        <use href="#petal" transform="rotate(300)"/>
+        <use href="#petal" transform="rotate(330)"/>
+      </g>
+    </svg>
+  </div>
+  <div class="hero-content">
+    <div class="hero-kicker">— Anatolian Psych Rock Lab —</div>
+    <h1>Nik<em>bin</em>ler</h1>
+    <p class="hero-sub">İyimserin şarkıları. 70'lerin Anadolu'sundan bugünün evrenine uzanan psikedelik bir yolculuk.</p>
+    <div class="hero-cta-row">
+      <a href="#dinle" class="btn btn-primary">▶ Eylülzede</a>
+      <a href="#konserler" class="btn btn-ghost">Takvim →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="hakkimizda">
+  <div class="container about">
+    <div class="about-visual" aria-hidden="true"></div>
+    <div>
+      <div class="section-label">— Hakkımızda</div>
+      <h2 class="section-title">Farsça <em>iyimser.</em><br>Anadolu'dan bir <em>ses.</em></h2>
+      <p>2014'te <em>Serkan Selay</em> tarafından kurulan Nikbinler, klasik bir grup değil — bir vizyonun, bir duygunun sesi. Anadolu'nun türküleri, deyişleri ve duaları; 70'lerin psikedelik rock'ı ve modern prodüksiyon estetiğinde yeniden doğuyor.</p>
+      <p><em>Berika Karadağ</em> — sahne adıyla <em>Berika KA</em> — vokalleriyle; Eylülzede, Suskun Yara, Boşluk, Artık Başka, Kimsesiz Rüya gibi kayıtları milyonlara taşıdı.</p>
+      <div class="about-stats">
+        <div><div class="stat-num">2014</div><div class="stat-label">Kuruluş</div></div>
+        <div><div class="stat-num">10M+</div><div class="stat-label">Dinleme</div></div>
+        <div><div class="stat-num">25K</div><div class="stat-label">Takipçi</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DISCOGRAPHY -->
+<section id="diskografi">
+  <div class="container">
+    <div class="section-label">— Diskografi</div>
+    <h2 class="section-title">Kayıtlar, <em>kesitler.</em></h2>
+    <div class="albums">
+      <div class="album">
+        <div class="album-cover cov1"><div class="play-overlay"><svg viewBox="0 0 60 60" fill="currentColor"><circle cx="30" cy="30" r="29" fill="none" stroke="currentColor" stroke-width="2"/><path d="M24 18 L44 30 L24 42 Z"/></svg></div></div>
+        <div class="album-title">Eylülzede</div>
+        <div class="album-meta">Single · 2024</div>
+      </div>
+      <div class="album">
+        <div class="album-cover cov2"><div class="play-overlay"><svg viewBox="0 0 60 60" fill="currentColor"><circle cx="30" cy="30" r="29" fill="none" stroke="currentColor" stroke-width="2"/><path d="M24 18 L44 30 L24 42 Z"/></svg></div></div>
+        <div class="album-title">Suskun Yara</div>
+        <div class="album-meta">Single · 2023</div>
+      </div>
+      <div class="album">
+        <div class="album-cover cov3"><div class="play-overlay"><svg viewBox="0 0 60 60" fill="currentColor"><circle cx="30" cy="30" r="29" fill="none" stroke="currentColor" stroke-width="2"/><path d="M24 18 L44 30 L24 42 Z"/></svg></div></div>
+        <div class="album-title">Kimsesiz Rüya</div>
+        <div class="album-meta">EP · 2023</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONCERTS -->
+<section class="concerts" id="konserler">
+  <div class="container">
+    <div class="section-label">— Konserler</div>
+    <h2 class="section-title">Yaklaşan <em>sahneler.</em></h2>
+    <div class="concert-list">
+      <div class="concert">
+        <div class="concert-date">Mayıs<b>12</b>2026</div>
+        <div class="concert-info"><h4>Zorlu PSM · İstanbul</h4><p>Anatolian Lab Live — Warm Up Set · 21:00</p></div>
+        <a href="#" class="btn btn-primary">Bilet Al</a>
+      </div>
+      <div class="concert">
+        <div class="concert-date">Haziran<b>04</b>2026</div>
+        <div class="concert-info"><h4>IF Performance · Ankara</h4><p>Full Live Set — Özel Konuklarla · 20:30</p></div>
+        <a href="#" class="btn btn-primary">Bilet Al</a>
+      </div>
+      <div class="concert">
+        <div class="concert-date">Temmuz<b>22</b>2026</div>
+        <div class="concert-info"><h4>Açıkhava · İzmir</h4><p>Anadolu Psikedelik Festival · 22:00</p></div>
+        <a href="#" class="btn btn-primary">Bilet Al</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NEWS -->
+<section id="haberler">
+  <div class="container">
+    <div class="section-label">— Haberler</div>
+    <h2 class="section-title">Son <em>kayıttan.</em></h2>
+    <div class="news-grid">
+      <article class="news-card">
+        <div class="news-thumb t1"></div>
+        <div class="news-body"><div class="news-meta">Basın · 04 Nis 2026</div><h4>Eylülzede, 10 milyon dinlemeyi geçti</h4><p>Single, yayımından bu yana Anadolu Psychedelic listesinin zirvesinde…</p></div>
+      </article>
+      <article class="news-card">
+        <div class="news-thumb t2"></div>
+        <div class="news-body"><div class="news-meta">Konser · 28 Mar 2026</div><h4>Zorlu PSM sahnesi açıklandı</h4><p>12 Mayıs'ta İstanbul'da Anatolian Lab Live ile karşınızdayız…</p></div>
+      </article>
+      <article class="news-card">
+        <div class="news-thumb t3"></div>
+        <div class="news-body"><div class="news-meta">Söyleşi · 11 Mar 2026</div><h4>Berika KA: "Eylülzede bir yalnızlık şarkısı"</h4><p>Vokalist Berika Karadağ, şarkının arkasındaki hikayeyi anlattı…</p></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer id="iletisim">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <svg viewBox="0 0 600 320"><use href="#nb-logo"/></svg>
+      <p>Anatolian Psych Rock Lab. <br>İyimserin ses yolculuğu.</p>
+    </div>
+    <div><h5>Gezin</h5><ul><li><a href="#hakkimizda">Hakkımızda</a></li><li><a href="#diskografi">Diskografi</a></li><li><a href="#konserler">Konserler</a></li><li><a href="#haberler">Haberler</a></li></ul></div>
+    <div><h5>Sosyal</h5><ul><li><a href="https://youtube.com/@nikbinler" target="_blank">YouTube</a></li><li><a href="https://instagram.com/nikbinlerband" target="_blank">Instagram</a></li><li><a href="#">Spotify</a></li><li><a href="#">Apple Music</a></li></ul></div>
+    <div class="newsletter"><h5>E-Bülten</h5><p style="font-size:13px;color:var(--ink-dim);margin-bottom:18px;font-style:italic;font-family:'Cormorant Garamond',serif">Yeni kayıt ve konserlerden ilk siz haberdar olun.</p><input type="email" placeholder="e-posta adresiniz"><button class="btn btn-primary">Abone Ol</button></div>
+  </div>
+  <div class="copyright">© 2026 Nikbinler · Tüm hakları saklıdır · booking@nikbinler.net</div>
+</footer>
+
+<div class="mockup-badge">Mockup B · Cosmic Anatolian <a href="../">← geri</a></div>
+
+</body>
+</html>
