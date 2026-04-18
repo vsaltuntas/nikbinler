@@ -66,6 +66,11 @@
   .nav-cta:hover{background:var(--accent-hi);color:var(--ink)}
   .lang{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ink-dim);letter-spacing:1px}
   .lang b{color:var(--accent)}
+  .nav-toggle{display:none;background:none;border:2px solid var(--ink);width:42px;height:42px;cursor:pointer;padding:0;position:relative}
+  .nav-toggle span{display:block;width:20px;height:2px;background:var(--ink);margin:4px auto;transition:transform .25s,opacity .2s}
+  .nav-toggle[aria-expanded="true"] span:nth-child(1){transform:translateY(6px) rotate(45deg)}
+  .nav-toggle[aria-expanded="true"] span:nth-child(2){opacity:0}
+  .nav-toggle[aria-expanded="true"] span:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
 
   /* HERO */
   .hero{
@@ -187,15 +192,32 @@
   .mockup-badge a{color:inherit;text-decoration:underline;margin-left:10px}
 
   @media(max-width:900px){
-    .nav-menu{display:none}
-    .hero{grid-template-columns:1fr}
-    .hero-right{order:2}
+    .nav-inner{grid-template-columns:auto auto;padding:14px 20px;gap:16px}
+    .nav-toggle{display:block;order:3}
+    .nav-right{order:2;margin-left:auto}
+    .nav-right .lang{display:none}
+    .nav-cta{padding:8px 14px;font-size:10px}
+    .nav-logo{height:36px}
+    .nav-menu{position:fixed;top:72px;left:0;right:0;background:var(--paper);border-bottom:2px solid var(--ink);flex-direction:column;align-items:stretch;justify-content:flex-start;gap:0;padding:8px 0;transform:translateY(-120%);transition:transform .3s ease;z-index:99;max-height:calc(100vh - 72px);overflow-y:auto}
+    .nav-menu.open{transform:translateY(0)}
+    .nav-menu a{padding:18px 24px;font-size:14px;border-bottom:1px solid rgba(10,10,10,.08)}
+    .nav-menu a::before,.nav-menu a::after{display:none}
+    .hero{grid-template-columns:1fr;padding:40px 20px;gap:30px}
+    .hero-right{order:2;padding:36px 24px}
+    .hero-right h2{font-size:26px}
+    .hero h1{margin:20px 0;font-size:clamp(64px,18vw,120px)}
+    .container{padding:0 20px}
+    section{padding:70px 20px}
+    .section-head{grid-template-columns:1fr;gap:16px;margin-bottom:40px}
     .about{grid-template-columns:1fr;gap:40px}
     .albums,.news-grid{grid-template-columns:1fr}
     .album,.news-card{border-right:none;border-bottom:2px solid var(--ink)}
-    .concert{grid-template-columns:1fr;gap:10px}
-    .footer-grid{grid-template-columns:1fr 1fr}
+    .album:last-child,.news-card:last-child{border-bottom:none}
+    .concert{grid-template-columns:1fr;gap:12px;padding:22px 20px}
+    .footer-grid{grid-template-columns:1fr;gap:40px}
+    footer{padding:60px 20px 28px}
     .copyright{flex-direction:column;gap:10px;text-align:center}
+    .runner-track{font-size:11px}
   }
 </style>
 </head>
@@ -228,7 +250,7 @@
 <nav>
   <div class="nav-inner">
     <a href="#" class="nav-logo" aria-label="Nikbinler"><svg viewBox="0 0 600 320"><use href="#nb-logo"/></svg></a>
-    <div class="nav-menu">
+    <div class="nav-menu" id="nav-menu">
       <a href="#hakkimizda">Hakkımızda</a>
       <a href="#diskografi">Diskografi</a>
       <a href="#konserler">Konserler</a>
@@ -239,6 +261,7 @@
       <span class="lang"><b>TR</b> / EN</span>
       <a href="#dinle" class="nav-cta">Dinle →</a>
     </div>
+    <button class="nav-toggle" aria-label="Menüyü aç/kapat" aria-expanded="false" aria-controls="nav-menu"><span></span><span></span><span></span></button>
   </div>
 </nav>
 
@@ -355,6 +378,24 @@
   </div>
   <div class="copyright"><span>© 2026 NIKBINLER · TÜM HAKLARI SAKLIDIR</span><span>NIKBINLER.NET</span></div>
 </footer>
+
+<script>
+  (function(){
+    var btn=document.querySelector('.nav-toggle');
+    var menu=document.getElementById('nav-menu');
+    if(!btn||!menu)return;
+    btn.addEventListener('click',function(){
+      var open=menu.classList.toggle('open');
+      btn.setAttribute('aria-expanded',open?'true':'false');
+    });
+    menu.querySelectorAll('a').forEach(function(a){
+      a.addEventListener('click',function(){
+        menu.classList.remove('open');
+        btn.setAttribute('aria-expanded','false');
+      });
+    });
+  })();
+</script>
 
 </body>
 </html>
